@@ -13,22 +13,29 @@
             flex-direction: column;
             font-family: Arial, sans-serif;
         }
-        #message {
+        #button {
             display: none;
-            font-size: 24px;
-            color: green;
-            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #button:hover {
+            background-color: darkgreen;
         }
     </style>
 </head>
 <body>
     <h1 id="countdown">5</h1>
-    <p id="message">Thời gian chờ đã hết!</p>
+    <button id="button" onclick="redirectToOtherPage()">Very</button>
 
     <script>
         let timeLeft = 5; // Thời gian đếm ngược (giây)
         const countdownElement = document.getElementById('countdown');
-        const messageElement = document.getElementById('message');
+        const buttonElement = document.getElementById('button');
 
         const timer = setInterval(() => {
             timeLeft--;
@@ -37,9 +44,14 @@
             if (timeLeft <= 0) {
                 clearInterval(timer);
                 countdownElement.style.display = 'none';
-                messageElement.style.display = 'block';
+                buttonElement.style.display = 'block'; // Hiển thị nút
             }
         }, 1000);
+
+        // Hàm chuyển hướng đến trang khác khi nhấn nút
+        function redirectToOtherPage() {
+            window.location.href = 'https://www.example.com'; // Thay URL này bằng địa chỉ bạn muốn chuyển tới
+        }
     </script>
 </body>
 </html>
