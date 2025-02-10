@@ -5,32 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đếm Ngược</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6b8e23, #3cb371); /* Màu nền gradient */
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-align: center;
+        }
+        h1 {
+            font-size: 80px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+        #countdown {
+            font-size: 80px;
+            font-weight: bold;
+            transition: font-size 0.5s ease; /* Hiệu ứng thay đổi kích thước chữ */
         }
         #button {
             display: none;
-            padding: 10px 20px;
-            background-color: green;
-            color: white;
+            padding: 15px 30px;
+            background-color: #ffcc00;
+            color: #333;
             border: none;
-            border-radius: 5px;
+            border-radius: 30px;
+            font-size: 20px;
             cursor: pointer;
-            font-size: 16px;
+            transition: transform 0.2s ease-in-out, background-color 0.3s ease;
         }
         #button:hover {
-            background-color: darkgreen;
+            background-color: #ff9900;
+            transform: scale(1.1); /* Tăng kích thước nút khi hover */
+        }
+        #button:active {
+            transform: scale(1); /* Quay lại kích thước bình thường khi nhấn */
+        }
+        #button:focus {
+            outline: none;
+        }
+        .countdown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     </style>
 </head>
 <body>
-    <h1 id="countdown">5</h1>
-    <button id="button" onclick="redirectToOtherPage()">Very</button>
+    <div class="countdown-container">
+        <h1>Đếm Ngược</h1>
+        <div id="countdown">5</div>
+        <button id="button" onclick="redirectToOtherPage()">Very</button>
+    </div>
 
     <script>
         let timeLeft = 5; // Thời gian đếm ngược (giây)
@@ -41,6 +75,11 @@
             timeLeft--;
             countdownElement.textContent = timeLeft;
             
+            // Thay đổi kích thước chữ khi đếm ngược gần hết
+            if (timeLeft <= 3) {
+                countdownElement.style.fontSize = '120px';
+            }
+
             if (timeLeft <= 0) {
                 clearInterval(timer);
                 countdownElement.style.display = 'none';
@@ -50,7 +89,7 @@
 
         // Hàm chuyển hướng đến trang khác khi nhấn nút
         function redirectToOtherPage() {
-            window.location.href = 'https://www.youtube.com/shorts/pbUvZoU73gs'; // Thay URL này bằng địa chỉ bạn muốn chuyển tới
+            window.location.href = 'https://www.youtube.com/shorts/9lVQPIFTmQc'; // Thay URL này bằng địa chỉ bạn muốn chuyển tới
         }
     </script>
 </body>
