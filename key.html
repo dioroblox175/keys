@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đếm Ngược</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        #message {
+            display: none;
+            font-size: 24px;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="countdown">5</h1>
+    <p id="message">Thời gian chờ đã hết!</p>
+
+    <script>
+        let timeLeft = 5; // Thời gian đếm ngược (giây)
+        const countdownElement = document.getElementById('countdown');
+        const messageElement = document.getElementById('message');
+
+        const timer = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                countdownElement.style.display = 'none';
+                messageElement.style.display = 'block';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
